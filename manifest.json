@@ -1,8 +1,8 @@
 {
   "dbVersion": "2025.11.08-100",
-  "fileUrl": "REPLACE_WITH_RAW_URL/appdata.db",
+  "fileUrl": "https://github.com/PawelWielga/nmn_db/raw/refs/heads/main/appdata.db",
   "sha256": "0ecaa37344a6ae138d99d541dfd63cec35a8de1a2e2b3c73aa4efcfbc76db78d",
   "minAppVersion": "2.0.0",
-  "createdAt": "2025-11-08T15:32:07Z",
+  "createdAt": "2025-11-08T15:36:07Z",
   "notes": "Wersja z 100 atrakcjami i typami zgodnymi z tabelą AttractionTypes."
 }
