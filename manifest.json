@@ -1,8 +1,8 @@
 {
-    "dbVersion":  "2024.11.08-demo",
-    "fileUrl":  "https://example.com/nmn/appdata.db",
-    "sha256":  "4457F984CF29E61D864D40898432BD523C308C92E8F28EC91890DB88BF33F685",
-    "minAppVersion":  "2.0.0",
-    "createdAt":  "2025-11-08T15:21:52.3712255Z",
-    "notes":  "Przykladowa baza do testow aplikacji mobilnej."
+  "dbVersion": "2025.11.08-100",
+  "fileUrl": "REPLACE_WITH_RAW_URL/appdata.db",
+  "sha256": "0ecaa37344a6ae138d99d541dfd63cec35a8de1a2e2b3c73aa4efcfbc76db78d",
+  "minAppVersion": "2.0.0",
+  "createdAt": "2025-11-08T15:32:07Z",
+  "notes": "Wersja z 100 atrakcjami i typami zgodnymi z tabelą AttractionTypes."
 }
