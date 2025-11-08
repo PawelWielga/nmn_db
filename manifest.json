@@ -1,8 +1,8 @@
 {
   "dbVersion": "2025.11.08",
-  "fileUrl": "REPLACE_WITH_RAW_URL/attractions.db",
+  "fileUrl": "https://raw.githubusercontent.com/PawelWielga/nmn_db/refs/heads/main/appdata.db",
   "sha256": "8b946acf991f4cecfd9bd946ae9f94c03032f65c369014f97600492f1103ad26",
-  "minAppVersion": "1.5.0",
+  "minAppVersion": "2.0.0",
   "createdAt": "2025-11-08T10:30:00Z",
   "notes": "Przykładowe dane startowe"
 }
