@@ -1,9 +1,9 @@
 [
   {
-    "filename": "appdata.db",
-    "url": "https://github.com/PawelWielga/nmn_db/raw/refs/heads/main/appdata.db",
-    "size": 123456,
-    "modifydate": "2025-12-08T15:36:07Z",
-    "metadata": "{\"note\":\"Wersja z 100 atrakcjami i typami zgodnymi z tabelą AttractionTypes.\",\"dbVersion\":\"2025.12.08-100\",\"sha256\":\"0ecaa37344a6ae138d99d541dfd63cec35a8de1a2e2b3c73aa4efcfbc76db78d\",\"minAppVersion\":\"2.0.0\",\"createdAt\":\"2025-12-08T15:36:07Z\"}"
+    "filename": "sqlite.db",
+    "url": "https://raw.githubusercontent.com/PawelWielga/nmn_db/refs/heads/main/sqlite.db",
+    "size": 147456,
+    "modifydate": "2026-01-12T13:48:34.0379391+00:00",
+    "metadata": "{\u0022note\u0022:null,\u0022dbVersion\u0022:\u002220260112-134834\u0022,\u0022sha256\u0022:\u0022966CDB3635799C6798D73A5A0AA1316BA8A9BF66EA49625DDE1D214503AB9272\u0022,\u0022minAppVersion\u0022:\u00221.0.0\u0022,\u0022createdAt\u0022:\u00222026-01-12T13:48:34.1097548\u002B00:00\u0022}"
   }
 ]
