@@ -13,9 +13,19 @@ function okUrl(url) {
   }
 }
 
+function resolveChromePath() {
+  // Prefer env override (np. /usr/bin/google-chrome-stable albo inna ścieżka)
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) return process.env.PUPPETEER_EXECUTABLE_PATH;
+
+  // Najczęstsze ścieżki w Debian/Ubuntu
+  // (w Twoim kontenerze po `apt-get install -y chromium` zwykle jest /usr/bin/chromium)
+  return "/usr/bin/chromium";
+}
+
 async function withBrowser(fn) {
   const browser = await puppeteer.launch({
     headless: "new",
+    executablePath: resolveChromePath(),
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
