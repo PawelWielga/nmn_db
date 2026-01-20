@@ -52,8 +52,23 @@ async function preparePage(page, options = {}) {
   if (viewport?.width && viewport?.height) {
     await page.setViewport({ width: viewport.width, height: viewport.height });
   }
-  if (userAgent) await page.setUserAgent(userAgent);
-  if (extraHeaders) await page.setExtraHTTPHeaders(extraHeaders);
+
+  // Domyślne nagłówki językowe (pomaga w stabilnym tekście na banerach / consent)
+  const defaultHeaders = {
+    "Accept-Language": "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7",
+  };
+
+  if (extraHeaders) {
+    await page.setExtraHTTPHeaders({ ...defaultHeaders, ...extraHeaders });
+  } else {
+    await page.setExtraHTTPHeaders(defaultHeaders);
+  }
+
+  // Domyślny UA (jeśli nie podasz własnego)
+  const defaultUA =
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
+
+  await page.setUserAgent(userAgent || defaultUA);
 
   return { timeoutMs, waitUntil };
 }
@@ -158,8 +173,10 @@ app.post("/pdf", async (req, res) => {
  *   steps?: [
  *     { action: "waitForSelector", selector: "#id", timeoutMs?: 60000 },
  *     { action: "type", selector: "#id", text: "abc", delay?: 0 },
- *     { action: "click", selector: "button" },
- *     { action: "press", key: "Enter" },
+ *     { action: "click", selector: "button", waitForNavigation?: true, waitUntil?: "networkidle2", timeoutMs?: 60000 },
+ *     { action: "clickAndWaitForNavigation", selector: "button", waitUntil?: "networkidle2", timeoutMs?: 60000 },
+ *     { action: "press", key: "Enter", waitForNavigation?: true, waitUntil?: "networkidle2", timeoutMs?: 60000 },
+ *     { action: "wait", ms: 1000 }, // alias do waitForTimeout
  *     { action: "waitForTimeout", ms: 1000 },
  *     { action: "waitForNavigation", waitUntil?: "networkidle2", timeoutMs?: 60000 },
  *     { action: "evaluate", fn: "return document.title;" }
@@ -195,9 +212,29 @@ app.post("/run", async (req, res) => {
             });
             break;
 
-          case "click":
-            await page.click(step.selector);
+          case "click": {
+            if (step.waitForNavigation) {
+              const navPromise = page.waitForNavigation({
+                waitUntil: step.waitUntil ?? waitUntil,
+                timeout: step.timeoutMs ?? timeoutMs,
+              });
+              await page.click(step.selector);
+              await navPromise;
+            } else {
+              await page.click(step.selector);
+            }
             break;
+          }
+
+          case "clickAndWaitForNavigation": {
+            const navPromise = page.waitForNavigation({
+              waitUntil: step.waitUntil ?? waitUntil,
+              timeout: step.timeoutMs ?? timeoutMs,
+            });
+            await page.click(step.selector);
+            await navPromise;
+            break;
+          }
 
           case "type":
             await page.type(step.selector, step.text ?? "", {
@@ -205,10 +242,21 @@ app.post("/run", async (req, res) => {
             });
             break;
 
-          case "press":
-            await page.keyboard.press(step.key);
+          case "press": {
+            if (step.waitForNavigation) {
+              const navPromise = page.waitForNavigation({
+                waitUntil: step.waitUntil ?? waitUntil,
+                timeout: step.timeoutMs ?? timeoutMs,
+              });
+              await page.keyboard.press(step.key);
+              await navPromise;
+            } else {
+              await page.keyboard.press(step.key);
+            }
             break;
+          }
 
+          case "wait":
           case "waitForTimeout":
             await page.waitForTimeout(step.ms ?? 0);
             break;
