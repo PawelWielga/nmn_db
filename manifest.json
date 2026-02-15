@@ -2,8 +2,8 @@
   {
     "filename": "sqlite.db",
     "url": "https://raw.githubusercontent.com/PawelWielga/nmn_db/refs/heads/main/sqlite.db",
-    "size": 147456,
-    "modifydate": "2026-01-12T13:55:23.6563582+00:00",
-    "metadata": "{\u0022note\u0022:null,\u0022dbVersion\u0022:\u002220260112-135523\u0022,\u0022sha256\u0022:\u0022966CDB3635799C6798D73A5A0AA1316BA8A9BF66EA49625DDE1D214503AB9272\u0022,\u0022minAppVersion\u0022:\u00221.0.0\u0022,\u0022createdAt\u0022:\u00222026-01-12T13:55:23.7336153\u002B00:00\u0022}"
+    "size": 4096,
+    "modifydate": "2026-02-15T20:49:46.4853788+00:00",
+    "metadata": "{\u0022note\u0022:null,\u0022dbVersion\u0022:\u002220260215-204947\u0022,\u0022sha256\u0022:\u0022352A9BB23C329C5A9BF235BAF56917358B5B64B03F1A11D261FADAE9C3CDB721\u0022,\u0022minAppVersion\u0022:\u00221.0.0\u0022,\u0022createdAt\u0022:\u00222026-02-15T20:49:47.1828531\u002B00:00\u0022}"
   }
 ]
